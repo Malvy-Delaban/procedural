@@ -20,7 +20,8 @@ body .menu {
     position: absolute;
     right: 0;
     padding: 15vh 3vw;
-    transform: translateX(100%);
+    opacity: 0;
+    /* transform: translateX(100%); */
     background-color: rgba(0, 0, 0, 0.80);
     z-index: 1;
     transition: ease 0.3s;
@@ -33,7 +34,8 @@ body .menu {
 }
 
 body .menu-active {
-    transform: translateX(0%);
+    /* transform: translateX(0%); */
+    opacity: 100%;
 }
 
 body .menu button {
