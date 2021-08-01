@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+body .buttons {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 10vh;
+}
+
+body .buttons button{
+    background: none;
+    border-radius: 50rem;
+    border-color: white;
+    border-style: solid;
+    border-width: 2px;
+    padding: 1vh 2vh;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+canvas {
+    display: block;
+}
