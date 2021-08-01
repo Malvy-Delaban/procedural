@@ -21,7 +21,6 @@ body .menu {
     right: 0;
     padding: 15vh 3vw;
     opacity: 0;
-    /* transform: translateX(100%); */
     background-color: rgba(0, 0, 0, 0.80);
     z-index: 1;
     transition: ease 0.3s;
@@ -34,7 +33,6 @@ body .menu {
 }
 
 body .menu-active {
-    /* transform: translateX(0%); */
     opacity: 100%;
 }
 
