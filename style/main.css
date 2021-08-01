@@ -15,15 +15,14 @@ body .menu {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-evenly;
     position: absolute;
     right: 0;
     padding: 15vh 3vw;
-    opacity: 0;
     background-color: rgba(0, 0, 0, 0.80);
-    z-index: 1;
     transition: ease 0.3s;
+    display: none;
+    z-index: 1;
 }
 
 @media (orientation: portrait) {
@@ -32,11 +31,22 @@ body .menu {
     }
 }
 
-body .menu-active {
-    opacity: 100%;
+body .menu div {
 }
 
-body .menu button {
+body .menu-active {
+    display: flex;
+}
+
+body .button-container {
+    position: absolute;
+    bottom: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+body .button-container button {
     background: none;
     border-radius: 50rem;
     border-color: white;
@@ -46,7 +56,7 @@ body .menu button {
     color: white;
     font-size: 20px;
     cursor: pointer;
-    width: 60%;
+    width: 20%;
 }
 
 canvas {
@@ -58,8 +68,6 @@ canvas {
     position: absolute;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between;
-    height: 32px; */
     top: 5vh;
     right: 5vh;
     cursor: pointer;
@@ -98,7 +106,7 @@ canvas {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .text-slider {
