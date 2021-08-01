@@ -11,7 +11,8 @@ class Cube {
     sizeRatio;
     heightAmplifier = 10;
 
-    constructor(x, z, height, mapWidth) {
+    constructor(x, z, height, mapWidth, heightAmplifier) {
+        this.heightAmplifier = heightAmplifier;
         this.sizeRatio = mapWidth / 10;
         this.height = height * this.heightAmplifier;
         this.mapPos = { "x": x, "z": z };
@@ -55,12 +56,21 @@ class Cube {
         this.material.color.set(color);
     }
 
-    overwriteTile(height) {
+    overwriteTile(height, heightAmplifier) {
+        this.heightAmplifier = heightAmplifier;
         this.height = height * this.heightAmplifier;
         delete this.geometry;
         this.geometry = new THREE.BoxGeometry(1 / this.sizeRatio, (this.height + 0.5) / this.sizeRatio, 1 / this.sizeRatio);
         this.mesh.geometry = this.geometry;
         this.mesh.position.y = (0 + this.height / 2) / this.sizeRatio;
         this.defineColor();
+    }
+
+    getGeometry() {
+        return this.geometry;
+    }
+
+    getMaterial() {
+        return this.material;
     }
 }

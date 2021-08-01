@@ -14,7 +14,7 @@ camera.position.set(20, 20, 20);
 camera.lookAt(scene.position);
 
 // Map creation
-var map = new cubeMap(50);
+var map = new cubeMap();
 Array.from(map.getMap()).forEach(tile => {
     scene.add(tile.getMesh());
 });
@@ -36,13 +36,58 @@ window.addEventListener('resize', () => {
     camera.updateProjectionMatrix();
 });
 
-//render
+// Render
 var render = function () {
     requestAnimationFrame(render);
     renderer.render(scene, camera);
 }
 render();
 
+// Regenerate button
 function regenerate() {
-    this.map.reset();
+    for (let i = scene.children.length - 1; i >= 0; i--) {
+        if(scene.children[i].type === "Mesh")
+            scene.remove(scene.children[i]);
+    }
+    this.map.empty();
+    this.map.generateMap(
+        document.getElementById("slider-size").value,
+        document.getElementById("slider-height").value,
+        101 - document.getElementById("slider-variation").value
+        );
+    Array.from(map.getMap()).forEach(tile => {
+        scene.add(tile.getMesh());
+    });
 }
+
+// Sliders
+var sliderHeight = document.getElementById("slider-height");
+var outputHeight = document.getElementById("height-amplifier");
+outputHeight.innerHTML = sliderHeight.value;
+sliderHeight.oninput = function () {
+    outputHeight.innerHTML = this.value;
+}
+var sliderSize = document.getElementById("slider-size");
+var outputSize = document.getElementById("size");
+outputSize.innerHTML = sliderSize.value;
+sliderSize.oninput = function () {
+    outputSize.innerHTML = this.value;
+}
+var sliderVariation = document.getElementById("slider-variation");
+var outputVariation = document.getElementById("variation");
+outputVariation.innerHTML = sliderVariation.value;
+sliderVariation.oninput = function () {
+    outputVariation.innerHTML = this.value;
+}
+
+// Open / Close menu
+const menuSlide = () => {
+    const burger = document.querySelector(".burger-icon");
+    const menu = document.querySelector(".menu");
+    
+    burger.addEventListener("click", () => {
+        menu.classList.toggle("menu-active");
+        burger.classList.toggle("burger-active")
+    });
+}
+menuSlide();
