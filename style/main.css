@@ -59,6 +59,12 @@ body .button-container button {
     width: 20%;
 }
 
+@media (orientation: portrait) {
+    body .button-container button {
+        width: 45%;
+    }
+}
+
 canvas {
     display: block;
 }
